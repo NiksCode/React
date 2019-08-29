@@ -1,43 +1,34 @@
-//2:00:52
-import React, { Component } from "react";
-import { View, Text, StyleSheet, Image, Dimensions, TouchableOpacity } from 'react-native'
-import config from "./config";
-import { PostFeed } from './components/container'
+//29:32
+
+import React, {Component} from "react";
+import {View, StyleSheet} from "react-native";
+import {MainFeed, Login, Camera, Profile } from "./components/screens";
+import { createSwitchNavigator, createAppContainer, createBottomTabNavigator } from 'react-navigation';
 
 
-class InstaClone extends Component {
+const Tabs = createBottomTabNavigator({
+    feed: MainFeed,
+    camera: Camera,
+    profile: Profile
 
+})
 
-    render(){
-
-        return(
-
-            <View style={{ flex: 1, width: 100 + "%", height: 100 + "%" }}>
-                <View style={styles.tempNav}>
-                    <Text>Instagram</Text>
-                </View>
-                <PostFeed />
-            </View>
-        );
-    }
-
-}
-
-const styles = StyleSheet.create({
-   tempNav: {
-       width: 100 + "%",
-       height: 50,
-       marginTop: 2,
-       backgroundColor:'rgb(250,250,250)',
-       borderBottomColor:"rgb(233,233,233)",
-       borderBottomWidth: StyleSheet.hairlineWidth,
-       justifyContent: "center",
-       alignItems: "center"
-   }
+const MainStack = createSwitchNavigator({
+    login:{screen:Login},
+    main: Tabs
 });
 
+const AppContainer =createAppContainer(MainStack);
+
+
+class InstaClone extends React.Component {
+    render() {
+        return  <AppContainer/>;
+    }
+}
+
+export default (InstaClone);
 
 
 
-export default InstaClone;
 

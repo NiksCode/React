@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {FlatList} from "react-native";
+import {FlatList } from "react-native";
 import {Post} from "../presentation";
 
 
